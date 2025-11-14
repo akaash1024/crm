@@ -1,7 +1,5 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/database');
-const { User } = require('./User');
-const { Lead } = require('./Lead');
 
 const Activity = sequelize.define('Activity', {
   id: {
@@ -54,10 +52,6 @@ const Activity = sequelize.define('Activity', {
   tableName: 'activities',
   timestamps: true
 });
-
-// Define associations
-Activity.belongsTo(Lead, { foreignKey: 'leadId', as: 'lead' });
-Activity.belongsTo(User, { foreignKey: 'userId', as: 'user' });
 
 module.exports = Activity;
 

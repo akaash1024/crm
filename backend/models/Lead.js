@@ -1,6 +1,5 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/database');
-const { User } = require('./User');
 
 const Lead = sequelize.define('Lead', {
   id: {
@@ -80,10 +79,6 @@ const Lead = sequelize.define('Lead', {
   tableName: 'leads',
   timestamps: true
 });
-
-// Define associations
-Lead.belongsTo(User, { foreignKey: 'assignedToId', as: 'assignedTo' });
-Lead.belongsTo(User, { foreignKey: 'createdById', as: 'createdBy' });
 
 // Instance method to get full name
 Lead.prototype.getFullName = function() {
